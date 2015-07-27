@@ -6,13 +6,13 @@ public class IPv4Address {
     private boolean isString = false;
     
     public IPv4Address(String address) throws IllegalArgumentException {
-        // validate(address);
+        validate(address);
         this.stringIP = address;
         isString = true;
     }
     
     public IPv4Address(long address) throws IllegalArgumentException {
-        // validate(address);
+        validate(address);
         this.longIP = address;
         // System.out.println("Constructor has worked: " + longIP);
     }
@@ -63,36 +63,36 @@ public class IPv4Address {
         }
     }
     
-    // public void validate(String address) {
-    //     String[] octets = address.split("//.");
+    public void validate(String address) {
+        String[] octets = address.split("\\.");
         
-    //     if ( octets.length != 4 ) {
-    //         throw new IllegalArgumentException();
-    //     }
-    //     for ( int i = 0; i < octets.length; i++ ) {
-    //         int ip = Integer.parseInt(octets[i]);
+        if ( octets.length != 4 ) {
+            throw new IllegalArgumentException();
+        }
+        for ( int i = 0; i < octets.length; i++ ) {
+            int ip = Integer.parseInt(octets[i]);
             
-    //         if ( ip > 255 || ip < 0 ) {
-    //             throw new IllegalArgumentException();
-    //         }
-    //     }
-    // }
-    
-    // public void validate(long address) {
-    //     if ( address > 4294967295l || address < 0 ) {
-    //         throw new IllegalArgumentException();
-    //     }
-    // }
-    
-    public static void main(String[] args) {
-        IPv4Address ip1 = new IPv4Address("192.168.0.1");
-        IPv4Address ip2 = new IPv4Address(3234673832l);
-        
-        System.out.println(ip1.toString());
-        System.out.println(ip1.toLong());
-        System.out.println(ip2.toString());
-        System.out.println(ip2.toLong());
-        
-        System.out.println(ip1.lessThan(new IPv4Address("182.0.0.1")));
+            if ( ip > 255 || ip < 0 ) {
+                throw new IllegalArgumentException();
+            }
+        }
     }
+    
+    public void validate(long address) {
+        if ( address > 4294967295l || address < 0 ) {
+            throw new IllegalArgumentException();
+        }
+    }
+    
+    // public static void main(String[] args) {
+    //     IPv4Address ip1 = new IPv4Address("192.168.0.1");
+    //     IPv4Address ip2 = new IPv4Address(3234673832l);
+        
+    //     System.out.println(ip1.toString());
+    //     System.out.println(ip1.toLong());
+    //     System.out.println(ip2.toString());
+    //     System.out.println(ip2.toLong());
+        
+    //     System.out.println(ip1.lessThan(new IPv4Address("182.0.0.1")));
+    // }
 }
