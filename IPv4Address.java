@@ -22,7 +22,7 @@ public class IPv4Address {
     }
     
     public boolean greatThan(IPv4Address address) {
-        return this.toLong() < address.toLong();
+        return this.toLong() > address.toLong();
     }
     
     public boolean equals(IPv4Address address) {
@@ -84,15 +84,17 @@ public class IPv4Address {
         }
     }
     
-    // public static void main(String[] args) {
-    //     IPv4Address ip1 = new IPv4Address("192.168.0.1");
-    //     IPv4Address ip2 = new IPv4Address(3234673832l);
+    public static void main(String[] args) {
+        IPv4Address ip1 = new IPv4Address("192.168.0.1");
+        IPv4Address ip2 = new IPv4Address(3234673832l);
         
-    //     System.out.println(ip1.toString());
-    //     System.out.println(ip1.toLong());
-    //     System.out.println(ip2.toString());
-    //     System.out.println(ip2.toLong());
+        // System.out.println(ip1.toString());
+        // System.out.println(ip1.toLong());
+        // System.out.println(ip2.toString());
+        // System.out.println(ip2.toLong());
         
-    //     System.out.println(ip1.lessThan(new IPv4Address("182.0.0.1")));
-    // }
+        // System.out.println(ip1.lessThan(new IPv4Address("182.0.0.1")));
+        System.out.println(ip1.equals(new IPv4Address("182.0.0.1")));
+        System.out.println(ip1.equals(new IPv4Address("192.168.0.1")));
+    }
 }
